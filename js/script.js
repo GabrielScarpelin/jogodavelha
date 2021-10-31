@@ -19,13 +19,13 @@ function jogar(x, y){
                 }
             }
             if (contagem == 3){
-                pontos[elemento] += 1
+                pontos[elemento]++
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo()
             }
             
         }
-        if (x == 2){
+        else if (x == 2){
             for (let i = 1; i <= 3; i++){
                 let verificacao = document.getElementById(`${x},${i}`).innerHTML
                 if (verificacao == elemento){
@@ -39,7 +39,7 @@ function jogar(x, y){
             }
             
         }
-        if (x == 3){
+        else if (x == 3){
             for (let i = 1; i <= 3; i++){
                 let verificacao = document.getElementById(`${x},${i}`).innerHTML
                 if (verificacao == elemento){
@@ -47,7 +47,7 @@ function jogar(x, y){
                 }
             }
             if (contagem == 3){
-                pontos[elemento] += 1
+                pontos[elemento]++
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo()
             }   
@@ -67,7 +67,7 @@ function jogar(x, y){
             }
             
         }
-        if (y == 2){
+        else if (y == 2){
             for (let i = 1; i <= 3; i++){
                 let verificacao = document.getElementById(`${i},${y}`).innerHTML
                 if (verificacao == elemento){
@@ -81,7 +81,7 @@ function jogar(x, y){
             }
             
         }
-        if (y == 3){
+        else if (y == 3){
             for (let i = 1; i <= 3; i++){
                 let verificacao = document.getElementById(`${i},${y}`).innerHTML
                 if (verificacao == elemento){
@@ -95,40 +95,44 @@ function jogar(x, y){
             }   
         }
         if (x == 1 && y == 3){
-            if (document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML){
+            if ((document.getElementById(`${x},${y}`).innerHTML == document.getElementById('2,2').innerHTML && document.getElementById(`${x},${y}`).innerHTML == document.getElementById(`3,1`).innerHTML) && document.getElementById(`${x},${y}`).innerHTML != ''){
                 pontos[elemento] += 1
+                alert(document.getElementById("2,2").innerHTML)
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo() 
             }
+            else {
+                
+            }
         }
         else if (x == 1 && y == 1){
-            if (document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML){
+            if ((document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML) && document.getElementById(`${x},${y}`).innerHTML != ''){
                 pontos[elemento] += 1
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo() 
             }
         }
         else if (x == 3 && y == 1){
-            if (document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`1,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML){
+            if ((document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`1,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML) && document.getElementById(`${x},${y}`).innerHTML != ''){
                 pontos[elemento] += 1
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo() 
             }
         }
         else if (x == 3 && y == 3){
-            if (document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`1,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML){
+            if ((document.getElementById(`2,2`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`1,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML) && document.getElementById(`${x},${y}`).innerHTML != ''){
                 pontos[elemento] += 1
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo() 
             }
         }
         else if (x == 2 && y == 2){
-            if (document.getElementById(`1,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML){
+            if ((document.getElementById(`1,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML) && document.getElementById(`${x},${y}`).innerHTML != ''){
                 pontos[elemento] += 1
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo() 
             }
-            else if (document.getElementById(`1,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML){
+            else if ((document.getElementById(`1,1`).innerHTML == document.getElementById(`${x},${y}`).innerHTML && document.getElementById(`3,3`).innerHTML == document.getElementById(`${x},${y}`).innerHTML) && document.getElementById(`${x},${y}`).innerHTML != ''){
                 pontos[elemento] += 1
                 document.getElementById(`pontos${elemento}`).innerHTML = `${elemento}-${pontos[elemento]}`
                 reiniciarJogo() 
@@ -196,4 +200,11 @@ function reiniciarJogo(){
     document.getElementById('templateX').style.cssText = 'border-bottom: 2px solid rgba(21, 0, 80, 1);'
     document.getElementById('templateO').style.cssText = 'border-bottom: 2px solid rgba(21, 0, 80, 0);'
     vez = 'jogadorUm';
+}
+function scoreReset(){
+    reiniciarJogo()
+    pontos['X'] = 0;
+    pontos['O'] = 0;
+    document.getElementById('pontosX').innerHTML = 'X-0'
+    document.getElementById('pontosO').innerHTML = 'O-0'
 }
