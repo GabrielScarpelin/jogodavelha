@@ -39,7 +39,7 @@ function winnerVerification(x,y){
         for (let i = 1; i <= 3; i++){
             let verificacao = document.getElementById(`${x},${i}`).innerHTML
             if (verificacao == elemento){
-                contagem++
+                contagem++;
             }
         }
         if (contagem == 3){
